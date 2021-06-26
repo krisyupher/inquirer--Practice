@@ -44,18 +44,37 @@ const pauseOpts = [
     message: "presione Enter",
   },
 ];
+const inputOpts = [
+  {
+    type: "input",
+    name: "option",
+    message: "",
+    validate(value) {
+      if (value.length === 0) {
+        return "Digite un valor";
+      } else {
+        return true;
+      }
+    },
+  },
+];
 const inquirerMenu = async () => {
   console.clear();
   console.log("===================".green);
   console.log("Seleccione una opción");
   console.log("===================".green);
   const opt = await inquirer.prompt(menuOpts);
-  return opt;
+  return opt.option;
 };
 const pause = async () => {
   await inquirer.prompt(pauseOpts);
 };
+const inputText = async () => {
+  const { option } = await inquirer.prompt(inputOpts);
+  return option;
+};
 module.exports = {
   inquirerMenu,
   pause,
+  inputText,
 };
