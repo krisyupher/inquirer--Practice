@@ -1,1 +1,1 @@
-practice with yargs
+practice with inquirer 
