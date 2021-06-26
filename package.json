@@ -1,0 +1,23 @@
+{
+  "name": "yargs-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krisyupher/yargs-Practice-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krisyupher/yargs-Practice-/issues"
+  },
+  "homepage": "https://github.com/krisyupher/yargs-Practice-#readme",
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
+}
