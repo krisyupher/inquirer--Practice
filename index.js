@@ -1,10 +1,14 @@
 const colors = require("colors");
 const { inquirerMenu, pause, inputText } = require("./helpers/inquirer");
-const Task = require("./models/task");
+const { saveData, readData } = require("./helpers/saveData");
 const Tasks = require("./models/tasks");
 const main = async () => {
   let option = "";
   const tasks = new Tasks();
+  const dataBase = readData();
+  if (dataBase) {
+    tasks.LoadTasks(dataBase);
+  }
   do {
     option = await inquirerMenu();
     switch (option) {
@@ -13,7 +17,7 @@ const main = async () => {
         tasks.createTask(text);
         break;
       case "2":
-        console.log(tasks.List);
+        tasks.paintTasks();
         break;
       case "3":
         break;
@@ -28,6 +32,7 @@ const main = async () => {
       default:
         break;
     }
+    saveData(tasks.listArr);
     await pause();
   } while (option !== "0");
 };
