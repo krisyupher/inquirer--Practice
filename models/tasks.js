@@ -21,6 +21,11 @@ class Tasks {
       this.List[key.id] = key;
     });
   }
+  DeleteTask(id = "") {
+    if (this.List[id]) {
+      delete this.List[id];
+    }
+  }
   paintTasks() {
     this.listArr.map((key, index) => {
       console.log(
@@ -28,6 +33,36 @@ class Tasks {
           key.date === null ? "Pendiente".red : "Completada".green
         }`
       );
+    });
+  }
+  paintCompleted(completed = true) {
+    this.listArr.map((key, index) => {
+      if (completed) {
+        if (key.date) {
+          console.log(
+            `${colors.green(index + 1)} ${key.description} ::  ${
+              key.date.green
+            }`
+          );
+        }
+      } else {
+        if (!key.date) {
+          console.log(
+            `${colors.green(index + 1)} ${key.description} :: ${
+              "Pendiente".red
+            }`
+          );
+        }
+      }
+    });
+  }
+  toggleCompleted(ids = []) {
+    this.listArr.forEach((key) => {
+      if (ids.includes(key.id)) {
+        this.List[key.id].date = new Date().toISOString();
+      } else {
+        this.List[key.id].date = null;
+      }
     });
   }
 }

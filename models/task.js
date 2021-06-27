@@ -8,7 +8,7 @@ class Task {
   constructor(description) {
     this.id = uuidv4();
     this.description = description;
-    this.date = today;
+    this.date = null;
   }
 }
 module.exports = Task;
